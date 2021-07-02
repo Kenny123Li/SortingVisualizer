@@ -182,8 +182,8 @@ export default class SortingVisualizer extends React.Component{
             }
             else{
                 setTimeout(()=>{
-                    // barOneStyle.backgroundColor = NORMAL_COLOR;
-                    // barTwoStyle.backgroundColor = NORMAL_COLOR;
+                    barOneStyle.backgroundColor = NORMAL_COLOR;
+                    barTwoStyle.backgroundColor = NORMAL_COLOR;
                     const temp_height = barTwoStyle.height;
                     barTwoStyle.height = barOneStyle.height;
                     barOneStyle.height = temp_height;
@@ -196,6 +196,16 @@ export default class SortingVisualizer extends React.Component{
             }
         }
     }
+
+    insertionSort(){
+        let test_array = this.state.array;
+        let sorted_array = SortingAlgorithms.insertionSort(this.state.array);
+        let js_sorted_array = this.state.array.slice().sort((a, b)=> a-b);
+
+        console.log(arraysEqual(sorted_array, js_sorted_array));
+    }
+
+    selectionSort(){}
 
     sorted(){
         const arrayBars = document.getElementsByClassName('array-bar');
@@ -225,6 +235,8 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.quickSort()}>Quick Sort</button>
                 <button onClick={() => this.mergeSort()}>Merge Sort</button>
                 <button onClick={() => this.heapSort()}>Heap Sort</button>
+                <button onClick={() => this.insertionSort()}>Insertion Sort</button>
+                <button onClick={() => this.selectionSort()}>Selection Sort</button>
                 {/* <div class="slidecontainer">
                     <input type="range" min="1" max="100" value="50" class="slider" id="myRange"></input>
                 </div> */}

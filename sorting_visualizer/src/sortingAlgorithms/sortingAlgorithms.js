@@ -350,3 +350,15 @@ function merge(array, l, m, r){
     }
 }
 
+
+export function insertionSort(array){
+    
+    return array;
+}
+
+export function insertionSortAnimations(array){
+    if(array.length<=1){
+        return array;
+    }
+    const animation = [];
+}
