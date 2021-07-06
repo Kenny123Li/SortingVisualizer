@@ -350,9 +350,17 @@ function merge(array, l, m, r){
     }
 }
 
-
 export function insertionSort(array){
-    
+    for(let i=0; i<array.length-1; i++){
+        let min_index = i;
+
+        for(let j=i+1; j<array.length;j++){
+            if(array[j]<array[min_index]){
+                min_index = j;
+            }
+        }
+        swap(array, min_index, i);
+    }
     return array;
 }
 
@@ -361,4 +369,19 @@ export function insertionSortAnimations(array){
         return array;
     }
     const animation = [];
+
+    for(let i=0; i<array.length-1; i++){
+        let min_index = i;
+
+        for(let j=i+1; j<array.length;j++){
+            animation.push([min_index, j, 0, 0]);
+            animation.push([min_index, j, 0, 1]);
+            if(array[j]<array[min_index]){
+                min_index = j;
+            }
+        }
+        animation.push([i, min_index, 1, 0]);
+        swap(array, min_index, i);
+    }
+    return animation;
 }
